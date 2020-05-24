@@ -9,6 +9,9 @@
 import Foundation
 
 // Result options
-enum Act {
-    case start, win, lose, draw
+enum Act: String {
+    case start = "Start?" // not use
+    case win = "You WIN!"
+    case lose = "You LOSE..."
+    case draw = "This is DRAW."
 }

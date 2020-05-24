@@ -8,11 +8,13 @@
 
 import Foundation
 
-// Create a random number for opponent
-    let randomNumber = Int.random(in: 0...2)
+
 
 // Choice sign to opponent
     func randomSign() -> Sign {
+        
+        // Create a random number for opponent
+        let randomNumber = Int.random(in: 0...2)
         
         if randomNumber == 0 {
             return .rock
@@ -26,7 +28,7 @@ import Foundation
 enum Sign {
     case rock, scissors, paper
     
-    //Variable for switching robo icon on Sign
+    // Variable for switching robo icon on Sign
     var emoji: String {
         switch self {
         case .rock:
