@@ -37,16 +37,19 @@ class ViewController: UIViewController {
             rockLabel.isHidden = false
             scissorsLabel.isHidden = true
             paperLabel.isHidden = true
+            rockLabel.isEnabled = false
             
         case .scissors:
             rockLabel.isHidden = true
             scissorsLabel.isHidden = false
             paperLabel.isHidden = true
+            scissorsLabel.isEnabled = false
             
         case .paper:
             rockLabel.isHidden = true
             scissorsLabel.isHidden = true
             paperLabel.isHidden = false
+            paperLabel.isEnabled = false
         }
         resetLabel.isHidden = false
     }
@@ -54,8 +57,11 @@ class ViewController: UIViewController {
     // Reset for start position game
     func  reset() {
         rockLabel.isHidden = false
+        rockLabel.isEnabled = true
         scissorsLabel.isHidden = false
+        scissorsLabel.isEnabled = true
         paperLabel.isHidden = false
+        paperLabel.isEnabled = true
         resetLabel.isHidden = true
         roboLabel.text = "🤖" // Start title for roboLabel
         statusLabel.text = "Rock, Scissors or Paper?" // Start title for statusLabel
