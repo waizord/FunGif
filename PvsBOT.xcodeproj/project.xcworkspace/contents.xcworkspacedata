@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FunGif.xcodeproj">
+      location = "self:/Users/ivan/Documents/XCode/PvsBOT/PvsBOT.xcodeproj">
    </FileRef>
 </Workspace>
