@@ -1,17 +1,17 @@
-# Test project for my skills and working with git.
+# Game. Player vs robot Bot.
 
-Game. Player vs robot Bot.
+Test project for my skills and working with git.
 
 Изучение при создании:
 
--возможностей UIKit
+- возможностей UIKit
 
--взаимодействие с текстом и активными кнопками
+- взаимодействие с текстом и активными кнопками
 
--работа с изображением
+- работа с изображением
 
--работа с моделью
+- работа с моделью
 
--работа со структурами
+- работа со структурами
 
--возможностей Git
+- возможностей Git
