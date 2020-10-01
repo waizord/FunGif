@@ -17,10 +17,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var paperLabel: UIButton!
     @IBOutlet weak var resetLabel: UIButton!
     
+    // Добавление элементов кодом
+    let robolabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "I am ROBOT"
+        label.backgroundColor = .gray
+        return label
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resetLabel.isHidden = true
         
+        // отображение элементов на экране
+        view.addSubview(robolabel)
     }
     // Choice for opponent's sign and fix title for label text
     func play(_ sign: Sign) {
