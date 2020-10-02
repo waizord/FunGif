@@ -21,19 +21,67 @@ class ViewController: UIViewController {
     let robolabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "I am ROBOT"
+        label.text = "ROBOT"
         label.backgroundColor = .gray
         return label
     }()
     
+    let statuslabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .brown
+        return label
+    }()
     
+    let rockButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .red
+        return button
+    }()
+    
+    let scissorsButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .green
+        return button
+    }()
+    
+    let paperButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .blue
+        return button
+    }()
+    
+    let resetButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .orange
+        return button
+    }()
+    
+    let stackAllView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.backgroundColor = .black
+        return stack
+    }()
+    
+    let stackViewSign: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.backgroundColor = .purple
+        return stack
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resetLabel.isHidden = true
         
         // отображение элементов на экране
-        view.addSubview(robolabel)
+        addAllSubview()
     }
     // Choice for opponent's sign and fix title for label text
     func play(_ sign: Sign) {
@@ -93,6 +141,26 @@ class ViewController: UIViewController {
         reset()
     }
     
+    //MARK: - Stack view and subview
+    
+    func addAllSubview () {
+        addStackView()
+        view.addSubview(stackAllView)
+        view.addSubview(resetButton)
+    }
+    
+    func addStackView() {
+        addStackViewSign()
+        stackAllView.addArrangedSubview(robolabel)
+        stackAllView.addArrangedSubview(statuslabel)
+        stackAllView.addArrangedSubview(stackViewSign)
+    }
+    
+    func addStackViewSign() {
+        stackViewSign.addArrangedSubview(rockButton)
+        stackViewSign.addArrangedSubview(scissorsButton)
+        stackViewSign.addArrangedSubview(paperButton)
+    }
 
 }
 
