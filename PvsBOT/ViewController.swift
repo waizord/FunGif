@@ -29,7 +29,8 @@ class ViewController: UIViewController {
     let statuslabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .brown
+        label.text = "STATUS"
+        label.backgroundColor = .white
         return label
     }()
     
@@ -146,7 +147,6 @@ class ViewController: UIViewController {
     func addAllSubview () {
         addStackView()
         view.addSubview(stackAllView)
-        view.addSubview(resetButton)
     }
     
     func addStackView() {
@@ -154,6 +154,7 @@ class ViewController: UIViewController {
         stackAllView.addArrangedSubview(robolabel)
         stackAllView.addArrangedSubview(statuslabel)
         stackAllView.addArrangedSubview(stackViewSign)
+        stackAllView.addArrangedSubview(resetButton)
     }
     
     func addStackViewSign() {
