@@ -14,4 +14,7 @@ enum Act: String {
     case win = "You WON!"
     case lose = "You LOSE..."
     case draw = "This is DRAW."
+    case reset = "Try again?"
+    case statusGame = "Rock, Scissors or Paper?"
+    case robot = "🤖"
 }

@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     let robolabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "ROBOT"
+        label.text = Act.robot.rawValue
         label.backgroundColor = .gray
         return label
     }()
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     let statuslabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "STATUS"
+        label.text = Act.statusGame.rawValue
         label.backgroundColor = .white
         return label
     }()
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
+        button.setTitle(Sign.rock.emoji, for: .normal)
         return button
     }()
     
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .green
+        button.setTitle(Sign.scissors.emoji, for: .normal)
         return button
     }()
     
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
+        button.setTitle(Sign.paper.emoji, for: .normal)
         return button
     }()
     
@@ -59,6 +62,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .orange
+        button.setTitle(Act.reset.rawValue, for: .normal)
         return button
     }()
     
@@ -66,6 +70,7 @@ class ViewController: UIViewController {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
+        stack.spacing = CGFloat(5) //test
         stack.backgroundColor = .black
         return stack
     }()
@@ -73,6 +78,7 @@ class ViewController: UIViewController {
     let stackViewSign: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = CGFloat(5) //test
         stack.backgroundColor = .purple
         return stack
     }()
@@ -125,8 +131,8 @@ class ViewController: UIViewController {
         paperLabel.isHidden = false
         paperLabel.isEnabled = true
         resetLabel.isHidden = true
-        roboLabel.text = "🤖" // Start title for roboLabel
-        statusLabel.text = "Rock, Scissors or Paper?" // Start title for statusLabel
+        roboLabel.text = Act.robot.rawValue // Start title for roboLabel
+        statusLabel.text = Act.statusGame.rawValue // Start title for statusLabel
     }
     
     @IBAction func rockButtonPressed(_ sender: UIButton) {
