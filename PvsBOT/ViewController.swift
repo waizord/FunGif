@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.robot.rawValue
+        label.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         label.backgroundColor = .gray
         return label
     }()
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.statusGame.rawValue
         label.backgroundColor = .white
+        label.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         return label
     }()
     
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
         button.setTitle(Sign.rock.emoji, for: .normal)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         return button
     }()
     
@@ -47,6 +50,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .green
         button.setTitle(Sign.scissors.emoji, for: .normal)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         return button
     }()
     
@@ -55,6 +59,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
         button.setTitle(Sign.paper.emoji, for: .normal)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         return button
     }()
     
@@ -63,6 +68,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .orange
         button.setTitle(Act.reset.rawValue, for: .normal)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         return button
     }()
     
@@ -70,16 +76,12 @@ class ViewController: UIViewController {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = CGFloat(5) //test
-        stack.backgroundColor = .black
         return stack
     }()
     
     let stackViewSign: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.spacing = CGFloat(5) //test
-        stack.backgroundColor = .purple
         return stack
     }()
     
