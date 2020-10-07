@@ -9,15 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    //@IBOutlet weak var roboLabel: UILabel!
-    //@IBOutlet weak var statusLabel: UILabel!
-//    @IBOutlet weak var rockLabel: UIButton!
-//    @IBOutlet weak var scissorsLabel: UIButton!
-//    @IBOutlet weak var paperLabel: UIButton!
-//    @IBOutlet weak var resetLabel: UIButton!
     
-    // Добавление элементов кодом
+    // Добавление элементов через код
     let roboLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +82,7 @@ class ViewController: UIViewController {
         return stack
     }()
     
+    //MARK: View life
     override func viewDidLoad() {
         super.viewDidLoad()
         resetButton.isHidden = true
@@ -96,16 +90,15 @@ class ViewController: UIViewController {
         // отображение элементов на экране
         addAllSubview()
     }
-    // Choice for opponent's sign and fix title for label text
+    // Выбор результата при нажатии определенной кнопки
     func play(_ sign: Sign) {
         let oponentSign = randomSign()
         roboLabel.text = oponentSign.emoji
         
-        // Game result and title for status label
         let result = sign.getResult(for: oponentSign)
         statusLabel.text = result.rawValue
         
-        // Choice one icon on scene view
+        // Отображение выбранной кнопки и сокрытие других
         switch sign {
         case .rock:
             rockButton.isHidden = false
@@ -128,7 +121,7 @@ class ViewController: UIViewController {
         resetButton.isHidden = false
     }
     
-    // Reset for start position game
+    // Возвращение в начальное положение
     func  reset() {
         rockButton.isHidden = false
         rockButton.isEnabled = true
@@ -160,7 +153,6 @@ class ViewController: UIViewController {
         addStackView()
         view.addSubview(stackAllView)
     }
-    
     func addStackView() {
         addStackViewSign()
         stackAllView.addArrangedSubview(roboLabel)
@@ -168,7 +160,6 @@ class ViewController: UIViewController {
         stackAllView.addArrangedSubview(stackViewSign)
         stackAllView.addArrangedSubview(resetButton)
     }
-    
     func addStackViewSign() {
         stackViewSign.addArrangedSubview(rockButton)
         stackViewSign.addArrangedSubview(scissorsButton)
