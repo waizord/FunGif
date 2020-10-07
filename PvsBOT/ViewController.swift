@@ -10,15 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var roboLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var rockLabel: UIButton!
-    @IBOutlet weak var scissorsLabel: UIButton!
-    @IBOutlet weak var paperLabel: UIButton!
-    @IBOutlet weak var resetLabel: UIButton!
+    //@IBOutlet weak var roboLabel: UILabel!
+    //@IBOutlet weak var statusLabel: UILabel!
+//    @IBOutlet weak var rockLabel: UIButton!
+//    @IBOutlet weak var scissorsLabel: UIButton!
+//    @IBOutlet weak var paperLabel: UIButton!
+//    @IBOutlet weak var resetLabel: UIButton!
     
     // Добавление элементов кодом
-    let robolabel: UILabel = {
+    let roboLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.robot.rawValue
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let statuslabel: UILabel = {
+    let statusLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.statusGame.rawValue
@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .red
         button.setTitle(Sign.rock.emoji, for: .normal)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
+        button.addTarget(self, action: #selector(rockButtonPress), for: .touchUpInside)
         return button
     }()
     
@@ -51,6 +52,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .green
         button.setTitle(Sign.scissors.emoji, for: .normal)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
+        button.addTarget(self, action: #selector(scissorsButtonPress), for: .touchUpInside)
         return button
     }()
     
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .blue
         button.setTitle(Sign.paper.emoji, for: .normal)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
+        button.addTarget(self, action: #selector(paperButtonPress), for: .touchUpInside)
         return button
     }()
     
@@ -69,6 +72,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .orange
         button.setTitle(Act.reset.rawValue, for: .normal)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
+        button.addTarget(self, action: #selector(resetButtonPress), for: .touchUpInside)
         return button
     }()
     
@@ -87,7 +91,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetLabel.isHidden = true
+        resetButton.isHidden = true
         
         // отображение элементов на экране
         addAllSubview()
@@ -104,52 +108,52 @@ class ViewController: UIViewController {
         // Choice one icon on scene view
         switch sign {
         case .rock:
-            rockLabel.isHidden = false
-            scissorsLabel.isHidden = true
-            paperLabel.isHidden = true
-            rockLabel.isEnabled = false
+            rockButton.isHidden = false
+            scissorsButton.isHidden = true
+            paperButton.isHidden = true
+            rockButton.isEnabled = false
             
         case .scissors:
-            rockLabel.isHidden = true
-            scissorsLabel.isHidden = false
-            paperLabel.isHidden = true
-            scissorsLabel.isEnabled = false
+            rockButton.isHidden = true
+            scissorsButton.isHidden = false
+            paperButton.isHidden = true
+            scissorsButton.isEnabled = false
             
         case .paper:
-            rockLabel.isHidden = true
-            scissorsLabel.isHidden = true
-            paperLabel.isHidden = false
-            paperLabel.isEnabled = false
+            rockButton.isHidden = true
+            scissorsButton.isHidden = true
+            paperButton.isHidden = false
+            paperButton.isEnabled = false
         }
-        resetLabel.isHidden = false
+        resetButton.isHidden = false
     }
     
     // Reset for start position game
     func  reset() {
-        rockLabel.isHidden = false
-        rockLabel.isEnabled = true
-        scissorsLabel.isHidden = false
-        scissorsLabel.isEnabled = true
-        paperLabel.isHidden = false
-        paperLabel.isEnabled = true
-        resetLabel.isHidden = true
+        rockButton.isHidden = false
+        rockButton.isEnabled = true
+        scissorsButton.isHidden = false
+        scissorsButton.isEnabled = true
+        paperButton.isHidden = false
+        paperButton.isEnabled = true
+        resetButton.isHidden = true
         roboLabel.text = Act.robot.rawValue // Start title for roboLabel
         statusLabel.text = Act.statusGame.rawValue // Start title for statusLabel
     }
     
-    @IBAction func rockButtonPressed(_ sender: UIButton) {
+    //MARK: - Action buttons
+    @objc func rockButtonPress(_ sender: UIButton!) {
         play(.rock)
     }
-    @IBAction func scissorsButtonPressed(_ sender: UIButton) {
+    @objc func scissorsButtonPress(_ sender: UIButton!) {
         play(.scissors)
     }
-    @IBAction func paperButtonPressed(_ sender: UIButton) {
+    @objc func paperButtonPress(_ sender: UIButton!) {
         play(.paper)
     }
-    @IBAction func resetButtonPressed(_ sender: UIButton) {
+    @objc func resetButtonPress(_ sender: UIButton!) {
         reset()
     }
-    
     //MARK: - Stack view and subview
     
     func addAllSubview () {
@@ -159,8 +163,8 @@ class ViewController: UIViewController {
     
     func addStackView() {
         addStackViewSign()
-        stackAllView.addArrangedSubview(robolabel)
-        stackAllView.addArrangedSubview(statuslabel)
+        stackAllView.addArrangedSubview(roboLabel)
+        stackAllView.addArrangedSubview(statusLabel)
         stackAllView.addArrangedSubview(stackViewSign)
         stackAllView.addArrangedSubview(resetButton)
     }
