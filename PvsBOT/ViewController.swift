@@ -73,6 +73,7 @@ class ViewController: UIViewController {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
+        stack.alignment = .center
         return stack
     }()
     
@@ -85,6 +86,7 @@ class ViewController: UIViewController {
     //MARK: View life
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingConstraints()
         resetButton.isHidden = true
         
         // отображение элементов на экране
@@ -165,7 +167,9 @@ class ViewController: UIViewController {
         stackViewSign.addArrangedSubview(scissorsButton)
         stackViewSign.addArrangedSubview(paperButton)
     }
-
+    func settingConstraints() {
+        
+    }
 }
 
 
