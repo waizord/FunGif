@@ -168,7 +168,15 @@ class ViewController: UIViewController {
         stackViewSign.addArrangedSubview(paperButton)
     }
     func settingConstraints() {
+        print(stackAllView.center)
+        print(view.center)
+//        let horizontalConstraint = stackAllView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//        let verticalConstraint = stackAllView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
+        stackAllView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        stackAllView.heightAnchor.constraint(equalToConstant: 280).isActive = true
         
+        //stackAllView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor).isActive = true
     }
 }
 
