@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     let stackViewSign: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = CGFloat(10)
         return stack
     }()
     
@@ -90,6 +91,7 @@ class ViewController: UIViewController {
         
         // отображение элементов на экране
         addAllSubview()
+//        fontSize()
         settingConstraints()
     }
     // Выбор результата при нажатии определенной кнопки
@@ -149,6 +151,10 @@ class ViewController: UIViewController {
     @objc func resetButtonPress(_ sender: UIButton!) {
         reset()
     }
+//    //MARK: - Font size
+//    func fontSize() {
+//        print(view.heightAnchor.accessibilityActivationPoint.x)
+//    }
     //MARK: - Stack view and subview
     
     func addAllSubview () {
@@ -169,8 +175,8 @@ class ViewController: UIViewController {
     }
     
     func settingConstraints() {
-        stackAllView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stackAllView.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        stackAllView.widthAnchor.constraint(equalToConstant: roboLabel.font.pointSize * 4).isActive = true
+        stackAllView.heightAnchor.constraint(equalToConstant: roboLabel.font.pointSize * 3).isActive = true
         stackAllView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         stackAllView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
