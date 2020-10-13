@@ -10,12 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // Добавление элементов через код
     let roboLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.robot.rawValue
-        label.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         label.backgroundColor = .gray
         return label
     }()
@@ -25,7 +23,6 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Act.statusGame.rawValue
         label.backgroundColor = .white
-        label.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         return label
     }()
     
@@ -34,7 +31,6 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
         button.setTitle(Sign.rock.emoji, for: .normal)
-        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         button.addTarget(self, action: #selector(rockButtonPress), for: .touchUpInside)
         return button
     }()
@@ -44,7 +40,6 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .green
         button.setTitle(Sign.scissors.emoji, for: .normal)
-        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         button.addTarget(self, action: #selector(scissorsButtonPress), for: .touchUpInside)
         return button
     }()
@@ -54,7 +49,6 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
         button.setTitle(Sign.paper.emoji, for: .normal)
-        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 90)
         button.addTarget(self, action: #selector(paperButtonPress), for: .touchUpInside)
         return button
     }()
@@ -64,7 +58,6 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .orange
         button.setTitle(Act.reset.rawValue, for: .normal)
-        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         button.addTarget(self, action: #selector(resetButtonPress), for: .touchUpInside)
         return button
     }()
@@ -74,6 +67,7 @@ class ViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .center
+        stack.spacing = CGFloat(10)
         return stack
     }()
     
@@ -91,7 +85,7 @@ class ViewController: UIViewController {
         
         // отображение элементов на экране
         addAllSubview()
-//        fontSize()
+        fontSize()
         settingConstraints()
     }
     // Выбор результата при нажатии определенной кнопки
@@ -151,22 +145,18 @@ class ViewController: UIViewController {
     @objc func resetButtonPress(_ sender: UIButton!) {
         reset()
     }
-//    //MARK: - Font size
-//    func fontSize() {
-//        print(view.heightAnchor.accessibilityActivationPoint.x)
-//    }
-    //MARK: - Stack view and subview
     
+    //MARK: - Stack view and subview
     func addAllSubview () {
         addStackView()
         view.addSubview(stackAllView)
+        view.addSubview(resetButton)
     }
     func addStackView() {
         addStackViewSign()
         stackAllView.addArrangedSubview(roboLabel)
         stackAllView.addArrangedSubview(statusLabel)
         stackAllView.addArrangedSubview(stackViewSign)
-        stackAllView.addArrangedSubview(resetButton)
     }
     func addStackViewSign() {
         stackViewSign.addArrangedSubview(rockButton)
@@ -174,11 +164,24 @@ class ViewController: UIViewController {
         stackViewSign.addArrangedSubview(paperButton)
     }
     
+    //MARK: - Font size and constraints
+    func fontSize() {
+        roboLabel.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 8)
+        statusLabel.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 30)
+        rockButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 8)
+        scissorsButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 8)
+        paperButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 8)
+        resetButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: view.frame.height / 30)
+    }
+    
     func settingConstraints() {
         stackAllView.widthAnchor.constraint(equalToConstant: roboLabel.font.pointSize * 4).isActive = true
         stackAllView.heightAnchor.constraint(equalToConstant: roboLabel.font.pointSize * 3).isActive = true
-        stackAllView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        stackAllView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
         stackAllView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        resetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        resetButton.topAnchor.constraint(equalTo: stackAllView.bottomAnchor, constant: 10).isActive = true
     }
 }
 
