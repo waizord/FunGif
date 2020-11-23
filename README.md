@@ -1,6 +1,6 @@
 # Game. Player vs robot Bot.
 
-Test project for my skills and working with git.
+Тест проект для изучения и практики
 
 Изучение при создании:
 
